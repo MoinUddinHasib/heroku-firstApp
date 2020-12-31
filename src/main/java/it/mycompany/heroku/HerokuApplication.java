@@ -54,6 +54,8 @@ class Saluto {
 	
 	private String messaggio;
 
+	public Saluto() {}
+
 	public Saluto(String messaggio) {
 		super();
 		this.messaggio = messaggio;
