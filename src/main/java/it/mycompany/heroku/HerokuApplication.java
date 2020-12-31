@@ -8,28 +8,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-public class HerokuApplication implements CommandLineRunner{
-	
-	@Autowired
-	private SalutoRepository salutoRepository;
+public class HerokuApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HerokuApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		if(salutoRepository.count()==0) 
-			salutoRepository.save(new Saluto("Hello World"));		
+	@Bean
+	ApplicationRunner applicationRunner(SalutoRepository salutoRepository) {
+		return args -> {
+			salutoRepository.save(new Saluto("Hello World"));
+		};					
 	}
 
 }
