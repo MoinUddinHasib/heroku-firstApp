@@ -11,7 +11,7 @@
 	<groupId>it.mycompany</groupId>
 	<artifactId>heroku</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>heroku</name>
 	<description>Demo project for Spring Boot</description>
 
